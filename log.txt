@@ -1,0 +1,24 @@
+
+ Wed May 31 2023 12:43:40 GMT+0530 (India Standard Time) - /api/users/signin - {"email":"customer@ecom.com","password":"Password1"}
+ Wed May 31 2023 12:43:59 GMT+0530 (India Standard Time) - /api/products - {}
+ Wed May 31 2023 12:54:41 GMT+0530 (India Standard Time) - /api/product/?productID=10&userID=1&rating=5 - {}
+ Wed May 31 2023 12:55:16 GMT+0530 (India Standard Time) - /api/products/?productID=10&userID=1&rating=5 - {}
+ Wed May 31 2023 12:56:24 GMT+0530 (India Standard Time) - /api/products/rate?productID=10&userID=1&rating=5 - {}
+ Wed May 31 2023 12:56:48 GMT+0530 (India Standard Time) - /api/products/rate?productID=10&userID=1&rating=5 - {}
+ Wed May 31 2023 12:57:18 GMT+0530 (India Standard Time) - /api/products/rate?productID=10&userID=1&rating=5 - {}
+ Wed May 31 2023 12:57:30 GMT+0530 (India Standard Time) - /api/products/rate?productID=10&userID=1&rating=5 - {}
+ Wed May 31 2023 12:57:46 GMT+0530 (India Standard Time) - /api/products/rate?productID=10&userID=1&rating=5 - {}
+ Wed May 31 2023 12:58:07 GMT+0530 (India Standard Time) - /api/products/rate?productID=10&userID=1&rating=5 - {}
+ Wed May 31 2023 12:58:41 GMT+0530 (India Standard Time) - /api/products/rate?productID=10&userID=1&rating=5 - {}
+ Wed May 31 2023 12:58:53 GMT+0530 (India Standard Time) - /api/products/rate?productID=10&userID=1&rating=5 - {}
+ Wed May 31 2023 12:59:05 GMT+0530 (India Standard Time) - /api/products/rate?productID=10&userID=1&rating=5 - {}
+ Wed May 31 2023 12:59:42 GMT+0530 (India Standard Time) - /api/products/rate?productID=10&userID=1&rating=5 - {}
+ Wed May 31 2023 12:59:54 GMT+0530 (India Standard Time) - /api/products/rate?productID=1&userID=11&rating=5 - {}
+ Wed May 31 2023 13:00:31 GMT+0530 (India Standard Time) - /api/products?productID=1&userID=11&rating=5 - {}
+ Thu Jun 01 2023 11:59:17 GMT+0530 (India Standard Time) - /api/products/rate?productID=1&userID=11&rating=5 - {}
+ Thu Jun 01 2023 12:04:44 GMT+0530 (India Standard Time) - /api/products/rate?productID=1&userID=11&rating=5 - {}
+ Thu Jun 01 2023 12:06:27 GMT+0530 (India Standard Time) - /api/products/rate?productID=1&userID=11&rating=5 - {}
+ Thu Jun 01 2023 12:17:41 GMT+0530 (India Standard Time) - /api/products/rate?productID=1&userID=11&rating=5 - {}
+ Thu Jun 01 2023 12:18:01 GMT+0530 (India Standard Time) - /api/products/rate?productID=1&userID=11&rating=5 - {}
+ Thu Jun 01 2023 12:18:11 GMT+0530 (India Standard Time) - /api/products/rate?productID=1&userID=11&rating=5 - {}
+ Thu Jun 01 2023 12:18:20 GMT+0530 (India Standard Time) - /api/products/rate?productID=10&userID=1&rating=5 - {}

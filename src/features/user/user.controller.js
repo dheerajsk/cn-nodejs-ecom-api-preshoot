@@ -38,7 +38,7 @@ export default class UserController {
           userID: result.id,
           email: result.email,
         },
-        'AIb6d35fvJM4O9pXqXQNla2jBCH9kuLz',
+        process.env.JWT_SECRET,
         {
           expiresIn: '1h',
         }
@@ -49,6 +49,3 @@ export default class UserController {
     }
   }
 }
-
-this.signUp = this.signUp.bind(userController);
-this.signUp.bind(userController);

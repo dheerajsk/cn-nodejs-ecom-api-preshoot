@@ -53,3 +53,18 @@
  Wed Jun 07 2023 17:26:07 GMT+0530 (India Standard Time) - /api/products/rate?userID=64804b30f73932ecf794540f&productID=648068c0ab18f8233e445730&rating=4 - {"rating":6}
  Wed Jun 07 2023 17:26:31 GMT+0530 (India Standard Time) - /api/products/rate?userID=64804b30f73932ecf794540f&productID=648068c0ab18f8233e445730&rating=4 - {"rating":3}
  Wed Jun 07 2023 17:27:10 GMT+0530 (India Standard Time) - /api/products/rate?userID=64804b30f73932ecf794540f&productID=648068c0ab18f8233e445730&rating=3 - {}
+ Wed Jun 07 2023 19:48:58 GMT+0530 (India Standard Time) - /api/cartItems?productID=648068c0ab18f8233e445730&userID=64804b30f73932ecf794540f - {"desc":"1221","rate":"12","quantity":"1"}
+ Wed Jun 07 2023 19:48:58 GMT+0530 (India Standard Time) - /?productID=648068c0ab18f8233e445730&userID=64804b30f73932ecf794540f - {"desc":"1221","rate":"12","quantity":"1"}
+ Wed Jun 07 2023 19:49:15 GMT+0530 (India Standard Time) - /api/products/rate?userID=64804b30f73932ecf794540f&productID=648068c0ab18f8233e445730&rating=3 - {}
+ Wed Jun 07 2023 19:49:22 GMT+0530 (India Standard Time) - /api/cartItems?productID=648068c0ab18f8233e445730&userID=64804b30f73932ecf794540f - {"desc":"1221","rate":"12","quantity":"1"}
+ Wed Jun 07 2023 19:49:22 GMT+0530 (India Standard Time) - /?productID=648068c0ab18f8233e445730&userID=64804b30f73932ecf794540f - {"desc":"1221","rate":"12","quantity":"1"}
+ Wed Jun 07 2023 19:49:32 GMT+0530 (India Standard Time) - /api/cartItems?productID=648068c0ab18f8233e445730&userID=64804b30f73932ecf794540f - {"desc":"1221","rate":"12","quantity":"1"}
+ Wed Jun 07 2023 19:49:32 GMT+0530 (India Standard Time) - /?productID=648068c0ab18f8233e445730&userID=64804b30f73932ecf794540f - {"desc":"1221","rate":"12","quantity":"1"}
+ Wed Jun 07 2023 19:52:32 GMT+0530 (India Standard Time) - /api/cartItems?productID=648068c0ab18f8233e445730&userID=64804b30f73932ecf794540f - {"desc":"1221","rate":"12","quantity":"1"}
+ Wed Jun 07 2023 19:52:32 GMT+0530 (India Standard Time) - /?productID=648068c0ab18f8233e445730&userID=64804b30f73932ecf794540f - {"desc":"1221","rate":"12","quantity":"1"}
+ Wed Jun 07 2023 19:52:45 GMT+0530 (India Standard Time) - /api/cartItems?productID=648068c0ab18f8233e445730&userID=64804b30f73932ecf794540f - {"desc":"1221","rate":"12","quantity":"1"}
+ Wed Jun 07 2023 19:52:45 GMT+0530 (India Standard Time) - /?productID=648068c0ab18f8233e445730&userID=64804b30f73932ecf794540f - {"desc":"1221","rate":"12","quantity":"1"}
+ Wed Jun 07 2023 19:53:26 GMT+0530 (India Standard Time) - /api/cartItems - {}
+ Wed Jun 07 2023 19:53:26 GMT+0530 (India Standard Time) - / - {}
+ Wed Jun 07 2023 19:55:27 GMT+0530 (India Standard Time) - /api/cartItems - {}
+ Wed Jun 07 2023 19:55:27 GMT+0530 (India Standard Time) - / - {}

@@ -1,3 +1,4 @@
+import ProductModel from './product.model.js';
 import ProductRepository from './product.repository.js';
 
 export default class ProductController {
@@ -12,12 +13,7 @@ export default class ProductController {
 
   addProduct = async (req, res) => {
     const { name, price, sizes } = req.body;
-    const newProduct = {
-      name,
-      price: parseFloat(price),
-      sizes: sizes.split(','),
-      imageUrl: req.file.filename,
-    };
+    const newProduct = new ProductModel(null, name, parseFloat(price), sizes.split(','),imageUrl)
     const createdRecord = await this.productRepository.add(newProduct);
     res.status(201).send(createdRecord);
   }

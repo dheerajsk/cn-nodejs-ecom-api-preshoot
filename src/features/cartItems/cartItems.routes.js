@@ -2,7 +2,7 @@
 
 // 1. Import express.
 import express from 'express';
-import { CartItemsController } from './cartItems.controller.js';
+import CartItemsController from './cartItems.controller.js';
 
 // 2. Initialize Express router.
 const cartRouter = express.Router();

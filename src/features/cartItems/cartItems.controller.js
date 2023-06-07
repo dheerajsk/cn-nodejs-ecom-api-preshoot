@@ -1,31 +1,30 @@
-import CartIemModel from './cartItems.model.js';
+import CartItemsRepository from './cartItems.repository.js';
 
-export class CartItemsController {
-  add(req, res) {
+export default class CartItemsController {
+  constructor() {
+    this.cartItemsRepo = new CartItemsRepository();
+  }
+
+  add=async (req, res) => {
     const { productID, quantity } = req.query;
     const userID = req.userID;
-    CartIemModel.add(productID, userID, quantity);
+    await this.cartItemsRepo.addItem(productID, userID, quantity);
     res.status(201).send('Cart is updated');
   }
 
-  get(req, res) {
+  get=async (req, res) => {
     const userID = req.userID;
-    const items = CartIemModel.get(userID);
+    const items = await this.cartItemsRepo.getItemsForUser(userID);
     return res.status(200).send(items);
   }
 
-  delete(req, res) {
+  delete=async (req, res) => {
     const userID = req.userID;
     const cartItemID = req.params.id;
-    const error = CartIemModel.delete(
-      cartItemID,
-      userID
-    );
+    const error = await this.cartItemsRepo.deleteItem(cartItemID, userID);
     if (error) {
       return res.status(404).send(error);
     }
-    return res
-      .status(200)
-      .send('Cart Item is removed');
+    return res.status(200).send('Cart Item is removed');
   }
 }

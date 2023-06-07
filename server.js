@@ -9,7 +9,7 @@ import cartRouter from './src/features/cartItems/cartItems.routes.js';
 import apiDocs from './swagger.json' assert { type: 'json' };
 import loggerMiddleware from './src/middlewares/logger.middleware.js';
 import { ApplicationError } from './src/error-handler/applicationError.js';
-import connectDB from './src/configs/db.js';
+import {connectDB} from './src/configs/db.js';
 
 // 2. Create Server
 const server = express();
@@ -61,11 +61,11 @@ server.get('/', (req, res) => {
 
 // Error handler middleware
 server.use((err, req, res, next) => {
+  console.log("ERRRRR")
   console.log(err);
   if (err instanceof ApplicationError) {
     res.status(err.code).send(err.message);
   }
-
   // server errors.
   res
     .status(500)

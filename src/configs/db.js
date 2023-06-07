@@ -1,18 +1,25 @@
 import { MongoClient } from 'mongodb';
-const url = "mongodb://localhost:27017/mydb";
 
-const connectDB = () => {
-  MongoClient.connect(url)
-    .then(client => {
-      console.log("Database connected!");
-      const db = client.db("mydb");
-      // Add code here to interact with the database
-      client.close();
-    })
-    .catch(err => console.error(err));
-}
+const client = new MongoClient('mongodb://localhost:27017/');
+let db = null;
 
-export default connectDB;
+export const connectDB = async () => {
+  try {
+    await client.connect();
+    console.log('Connected successfully.');
+    db = client.db('myecomdb');
+  } catch (err) {
+    console.error('Unable to connect to the MongoDB server. Error:', err);
+  }
+};
+
+export const getDB = () => {
+  if (!db) {
+    throw new Error('Call connectDB first to initialize the database connection');
+  }
+  return db;
+};
+
 
 
 

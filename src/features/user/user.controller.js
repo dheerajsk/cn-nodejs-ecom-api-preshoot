@@ -1,30 +1,34 @@
 import UserModel from './user.model.js';
+import UserRepository from './user.repository.js';
 import jwt from 'jsonwebtoken';
 
 export default class UserController {
-  signUp(req, res) {
+  constructor() {
+    this.userRepository = new UserRepository();
+  }
+
+  signUp = async (req, res) => {
     const {
       name,
       email,
       password,
       type,
     } = req.body;
-    const user = UserModel.signUp(
-      name,
-      email,
-      password,
-      type
-    );
+
+    const userToCreate = new UserModel(name, email, password, type)
+
+    const user = await this.userRepository.signup(userToCreate);
     res.status(201).send(user);
   }
 
-  signIn(req, res) {
-    const result = UserModel.signIn(
+  signIn = async (req, res) => {
+    const result = await this.userRepository.signin(
       req.body.email,
       req.body.password
     );
+
     if (!result) {
-      return res
+      res
         .status(400)
         .send('Incorrect Credentials');
     } else {
@@ -41,7 +45,10 @@ export default class UserController {
       );
 
       // 2. Send token.
-      return res.status(200).send(token);
+      res.status(200).send(token);
     }
   }
 }
+
+this.signUp = this.signUp.bind(userController);
+this.signUp.bind(userController);

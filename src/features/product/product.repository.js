@@ -23,16 +23,46 @@ export default class ProductRepository {
     return product;
   }
 
+  // async rateProduct(userID, productID, rating) {
+  //   const db = getDB();
+
+  //   // 1. Remove existing rating from the same user.
+  //   await db
+  //     .collection(this.collectionName)
+  //     .updateOne(
+  //       { _id: new ObjectId(productID) },
+  //       { $pull: { ratings: { userID: new ObjectId(userID) } } }
+  //     );
+
+  //   // 2. Add new rating.
+  //   await db
+  //     .collection(this.collectionName)
+  //     .updateOne(
+  //       { _id: new ObjectId(productID) },
+  //       { $push: { ratings: { userID: new ObjectId(userID), rating: parseFloat(rating) } } }
+  //     );
+  // }
+
   async rateProduct(userID, productID, rating) {
     const db = getDB();
-    const response = await db
-      .collection(this.collectionName)
-      .updateOne(
-        { _id: new ObjectId(productID) },
-        { $push: { ratings: { userID, rating } } }
-      );
-    return response;
-  }
+    const productToUpdate = await db.collection(this.collectionName).findOne({ _id: new ObjectId(productID) });
+    const userRating = productToUpdate.ratings.find(rating => rating.userID === userID);
+    if (userRating) {
+        // User has already rated, update the rating.
+        await db.collection(this.collectionName).updateOne(
+            { _id: new ObjectId(productID), "ratings.userID": userID },
+            { $set: { "ratings.$.rating": rating } }
+        );
+    } else {
+        // New rating.
+        await db.collection(this.collectionName).updateOne(
+            { _id: new ObjectId(productID) },
+            { $push: { ratings: { userID, rating } } }
+        );
+    }
+}
+
+
 
   async getOne(id) {
     const db = getDB();

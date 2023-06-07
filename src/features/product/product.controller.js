@@ -1,12 +1,16 @@
-import ProductModel from './product.model.js';
+import ProductRepository from './product.repository.js';
 
 export default class ProductController {
-  getAllProducts(req, res) {
-    const products = ProductModel.getAll();
+  constructor() {
+    this.productRepository = new ProductRepository();
+  }
+
+  getAllProducts = async (req, res) => {
+    const products = await this.productRepository.getAll();
     res.status(200).send(products);
   }
 
-  addProduct(req, res) {
+  addProduct = async (req, res) => {
     const { name, price, sizes } = req.body;
     const newProduct = {
       name,
@@ -14,45 +18,33 @@ export default class ProductController {
       sizes: sizes.split(','),
       imageUrl: req.file.filename,
     };
-    const createdRecord =
-      ProductModel.add(newProduct);
+    const createdRecord = await this.productRepository.add(newProduct);
     res.status(201).send(createdRecord);
   }
 
-  rateProduct(req, res) {
-    console.log(req.query);
+  rateProduct = async (req, res) => {
     const userID = req.query.userID;
     const productID = req.query.productID;
     const rating = req.query.rating;
-    ProductModel.rateProduct(
-      userID,
-      productID,
-      rating
-    );
-    return res
-      .status(200)
-      .send('Rating has been added');
+    await this.productRepository.rateProduct(userID, productID, rating);
+    res.status(200).send('Rating has been added');
   }
 
-  getOneProduct(req, res) {
+  getOneProduct = async (req, res) => {
     const id = req.params.id;
-    const product = ProductModel.get(id);
+    const product = await this.productRepository.getOne(id);
     if (!product) {
       res.status(404).send('Product not found');
     } else {
-      return res.status(200).send(product);
+      res.status(200).send(product);
     }
   }
 
-  filterProducts(req, res) {
+  filterProducts = async (req, res) => {
     const minPrice = req.query.minPrice;
     const maxPrice = req.query.maxPrice;
     const category = req.query.category;
-    const result = ProductModel.filter(
-      minPrice,
-      maxPrice,
-      category
-    );
+    const result = await this.productRepository.filter(minPrice, maxPrice, category);
     res.status(200).send(result);
   }
 }

@@ -35,3 +35,17 @@
  Wed Jun 07 2023 14:48:04 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"John Doe","email":"john.doe@gmail.com","password":"Password1"}
  Wed Jun 07 2023 14:48:56 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"John Doe","email":"john.doe@gmail.com","password":"Password1"}
  Wed Jun 07 2023 14:49:11 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"John Doe","email":"john.doe@gmail.com","password":"Password1"}
+ Wed Jun 07 2023 16:53:19 GMT+0530 (India Standard Time) - /api/products - {}
+ Wed Jun 07 2023 16:53:44 GMT+0530 (India Standard Time) - /api/products - {}
+ Wed Jun 07 2023 16:54:15 GMT+0530 (India Standard Time) - /api/products - {}
+ Wed Jun 07 2023 16:56:19 GMT+0530 (India Standard Time) - /api/products - {}
+ Wed Jun 07 2023 16:57:07 GMT+0530 (India Standard Time) - /api/products/648068c0ab18f8233e445730 - {}
+ Wed Jun 07 2023 16:57:53 GMT+0530 (India Standard Time) - /api/products/648068c0ab18f8233e445730 - {}
+ Wed Jun 07 2023 16:58:53 GMT+0530 (India Standard Time) - /api/products/648068c0ab18f8233e445730 - {}
+ Wed Jun 07 2023 17:00:14 GMT+0530 (India Standard Time) - /api/products/1/rate?userID=64804b30f73932ecf794540f&productID=648068c0ab18f8233e445730&rating=4 - {"rating":4}
+ Wed Jun 07 2023 17:00:26 GMT+0530 (India Standard Time) - /api/products/1/rate?userID=64804b30f73932ecf794540f&productID=648068c0ab18f8233e445730&rating=4 - {"rating":4}
+ Wed Jun 07 2023 17:00:42 GMT+0530 (India Standard Time) - /api/products/648068c0ab18f8233e445730 - {}
+ Wed Jun 07 2023 17:00:56 GMT+0530 (India Standard Time) - /api/products/1/rate?userID=64804b30f73932ecf794540f&productID=648068c0ab18f8233e445730&rating=4 - {"rating":4}
+ Wed Jun 07 2023 17:01:30 GMT+0530 (India Standard Time) - /api/products/1/rate?userID=64804b30f73932ecf794540f&productID=648068c0ab18f8233e445730&rating=4 - {"rating":4}
+ Wed Jun 07 2023 17:01:38 GMT+0530 (India Standard Time) - /api/products/rate?userID=64804b30f73932ecf794540f&productID=648068c0ab18f8233e445730&rating=4 - {"rating":4}
+ Wed Jun 07 2023 17:01:59 GMT+0530 (India Standard Time) - /api/products/rate?userID=64804b30f73932ecf794540f&productID=648068c0ab18f8233e445730&rating=4 - {"rating":5}

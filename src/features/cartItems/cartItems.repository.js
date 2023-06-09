@@ -25,8 +25,16 @@ export default class CartItemsRepository {
 
   async addItem(cartItem) {
     const db = getDB();
-    await db.collection(this.collectionName).insertOne(
-      cartItem);
+    const filter = { productID: cartItem.productID, userID: cartItem.userID };
+    const updateDoc = {
+      $inc: { 
+        quantity: cartItem.quantity 
+      }
+    };
+    const options = { upsert: true };
+
+    await db.collection(this.collectionName).updateOne(filter, updateDoc, options);
     return cartItem;
-  }
+}
+
 }

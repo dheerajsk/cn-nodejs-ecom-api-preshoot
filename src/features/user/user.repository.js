@@ -2,15 +2,19 @@
 import { getDB } from "../../configs/db.js";
 
 class UserRepository {
+  constructor() {
+    this.collectionName = 'users';
+  }
+
   async signup(user) {
     const db = getDB();
-    await db.collection('users').insertOne(user);
+    await db.collection(this.collectionName).insertOne(user);
     return user;
   }
 
   async signin(email, password) {
     const db = getDB();
-    const user = await db.collection('users').findOne({ email, password });
+    const user = await db.collection(this.collectionName).findOne({ email, password });
     return user;
   }
 }

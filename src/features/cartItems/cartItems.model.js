@@ -3,7 +3,7 @@ export default class CartItemModel {
   constructor(productID, userID, quantity, id) {
     this.productID = productID;
     this.userID = userID;
-    this.quantity = quantity;
+    this.quantity = Number(quantity);
     this.id = id;
   }
 

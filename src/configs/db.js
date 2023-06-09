@@ -12,6 +12,7 @@ export const connectDB = async () => {
     await client.connect();
     console.log('Connected successfully.');
     db = client.db('myecomdb');
+    createCounter(db);
   } catch (err) {
     console.error('Unable to connect to the MongoDB server. Error:', err);
   }
@@ -22,6 +23,16 @@ export const getDB = () => {
     throw new Error('Call connectDB first to initialize the database connection');
   }
   return db;
+};
+
+const createCounter = async (db) => {
+  // Check if the counter document already exists
+  const existingCounter = await db.collection('counters').findOne({ _id: 'cartItemId' });
+
+  // If it doesn't exist, create it
+  if (!existingCounter) {
+    await db.collection('counters').insertOne({ _id: 'cartItemId', sequence_value: 0 });
+  }
 };
 
 

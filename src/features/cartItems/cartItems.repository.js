@@ -25,16 +25,36 @@ export default class CartItemsRepository {
 
   async addItem(cartItem) {
     const db = getDB();
+    
+    // Retrieve next sequence number
+    const sequenceDocument = await db.collection('counters').findOneAndUpdate(
+      { _id: 'cartItemId' }, // search filter
+      { $inc: { sequence_value: 1 } }, // update
+      { returnOriginal: false } // options
+    );
+  
+    // Now use the sequenceDocument's sequence_value as the _id for your new cartItem
+    cartItem._id = sequenceDocument.value.sequence_value;
+  
     const filter = { productID: cartItem.productID, userID: cartItem.userID };
     const updateDoc = {
-      $inc: { 
-        quantity: cartItem.quantity 
-      }
+      $setOnInsert: { _id: cartItem._id },  // set _id only on insert, not on update
+      $inc: { quantity: cartItem.quantity }
     };
     const options = { upsert: true };
-
+  
     await db.collection(this.collectionName).updateOne(filter, updateDoc, options);
     return cartItem;
-}
+  }
+  
+
+  async getNextSequenceValue(db) {
+  const sequenceDoc = await db.collection('counters').findOneAndUpdate(
+    { _id: "cartItemId" },
+    { $inc: { sequence_value: 1 }},
+    { returnOriginal: false }
+  );
+  return sequenceDoc.value.sequence_value;
+  }
 
 }

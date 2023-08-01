@@ -11,8 +11,9 @@ export const connectDB = async () => {
   try {
     await client.connect();
     console.log('Connected successfully.');
-    db = client.db('myecomdb');
+    db = client.db('ecomdb');
     createCounter(db);
+    createIndexes(db);
   } catch (err) {
     console.error('Unable to connect to the MongoDB server. Error:', err);
   }
@@ -34,6 +35,18 @@ const createCounter = async (db) => {
     await db.collection('counters').insertOne({ _id: 'cartItemId', sequence_value: 0 });
   }
 };
+
+
+const createIndexes = async(db) => {
+  // Single Field Index on productName
+  await db.collection('products').createIndex({ productName: 1 });
+
+  // Compound Index on productName and category
+  await db.collection('products').createIndex({ productName: 1, category: 1 });
+
+  // Text Index on productName
+  await db.collection('products').createIndex({ productName: "text" });
+}
 
 
 

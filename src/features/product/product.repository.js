@@ -72,27 +72,32 @@ export default class ProductRepository {
     return product;
   }
 
-//   async filter(minPrice, maxPrice, category) {
-//     const db = getDB();
-//     let filter = {};
-  
-//     if (minPrice && maxPrice) {
-//       filter = { $and: [{ price: { $gte: parseFloat(minPrice) } }, { price: { $lte: parseFloat(maxPrice) } }] };
-//     } else if (minPrice) {
-//       filter.price = { $gte: parseFloat(minPrice) };
-//     } else if (maxPrice) {
-//       filter.price = { $lte: parseFloat(maxPrice) };
-//     }
-//     if (category) {
-//       filter = { $and: [{ category: category }, filter] };
-//     const result = await db
-//       .collection(this.collectionName)
-//       .find(filter)
-//       .toArray();
-  
-//     return result;
+// async filter(minPrice, maxPrice, categories) {
+//   const db = getDB();
+//   let filter = {};
+
+//   if (minPrice && maxPrice) {
+//     filter = { $and: [{ price: { $gte: parseFloat(minPrice) } }, { price: { $lte: parseFloat(maxPrice) } }] };
+//   } else if (minPrice) {
+//     filter.price = { $gte: parseFloat(minPrice) };
+//   } else if (maxPrice) {
+//     filter.price = { $lte: parseFloat(maxPrice) };
 //   }
+
+//   if (categories) {
+//     filter = { $and: [{ category: { $in: categories } }, filter] };
+//   }
+
+//   const result = await db
+//     .collection(this.collectionName)
+//     .find(filter)
+//     .project({ name: 1, price: 1 }) // only fetch name and price
+//     .toArray();
+
+//   return result;
 // }
+
+
 async filter(minPrice, maxPrice, categories) {
   const db = getDB();
   let filter = {};
@@ -112,6 +117,7 @@ async filter(minPrice, maxPrice, categories) {
   const result = await db
     .collection(this.collectionName)
     .find(filter)
+    .project({ _id: 0}) // exclude _id
     .toArray();
 
   return result;

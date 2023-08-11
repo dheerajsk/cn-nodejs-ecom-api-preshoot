@@ -15,6 +15,7 @@ const jwtAuth = (req, res, next) => {
       token,
       'AIb6d35fvJM4O9pXqXQNla2jBCH9kuLz'
     );
+    console.log("dsd");
     console.log(payload);
     req.userID = payload.userID;
     console.log(payload);

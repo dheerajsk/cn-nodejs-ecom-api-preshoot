@@ -36,7 +36,7 @@ export default class CartItemsRepository {
     // Now use the sequenceDocument's sequence_value as the _id for your new cartItem
     cartItem._id = sequenceDocument.value.sequence_value;
   
-    const filter = { productID: cartItem.productID, userID: cartItem.userID };
+    const filter = { productId: new ObjectId(cartItem.productID), userId: new ObjectId(cartItem.userID) };
     const updateDoc = {
       $setOnInsert: { _id: cartItem._id },  // set _id only on insert, not on update
       $inc: { quantity: cartItem.quantity }

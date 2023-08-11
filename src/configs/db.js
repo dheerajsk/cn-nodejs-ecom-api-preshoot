@@ -11,7 +11,7 @@ export const connectDB = async () => {
   try {
     await client.connect();
     console.log('Connected successfully.');
-    db = client.db('ecomdb');
+    db = client.db('testcom');
     createCounter(db);
     createIndexes(db);
   } catch (err) {
@@ -25,6 +25,10 @@ export const getDB = () => {
   }
   return db;
 };
+
+export const getClient =()=>{
+  return client;
+}
 
 const createCounter = async (db) => {
   // Check if the counter document already exists

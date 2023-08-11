@@ -38,7 +38,7 @@ export default class UserController {
           userID: result._id,
           email: result.email,
         },
-        process.env.JWT_SECRET,
+        "AIb6d35fvJM4O9pXqXQNla2jBCH9kuLz",
         {
           expiresIn: '1h',
         }

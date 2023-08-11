@@ -7,18 +7,13 @@ export default class UserController {
     this.userRepository = new UserRepository();
   }
 
-  signUp = async (req, res) => {
-    const {
-      name,
-      email,
-      password,
-      type,
-    } = req.body;
-
-    const userToCreate = new UserModel(name, email, password, type)
-
-    const user = await this.userRepository.signup(userToCreate);
-    res.status(201).send(user);
+  signUp = async (req, res, next) => {
+    try{
+      const user = await this.userRepository.signup(req.body);
+      res.status(201).send(user);
+    }catch(err){
+      next(err);
+    }  
   }
 
   signIn = async (req, res) => {

@@ -1,22 +1,19 @@
-// UserRepository.js
-import { getDB } from "../../configs/db.js";
+import mongoose from 'mongoose';
+import { userSchema } from './user.schema.js';
+
+const UserModel = mongoose.model('User', userSchema);
 
 class UserRepository {
-  constructor() {
-    this.collectionName = 'users';
-  }
 
-  async signup(user) {
-    const db = getDB();
-    await db.collection(this.collectionName).insertOne(user);
-    return user;
-  }
+    async signup(user) {
+        const newUser = new UserModel(user);
+        await newUser.save();
+        return newUser;
+    }
 
-  async signin(email, password) {
-    const db = getDB();
-    const user = await db.collection(this.collectionName).findOne({ email, password });
-    return user;
-  }
+    async signin(email, password) {
+        return await UserModel.findOne({ email, password });
+    }
 }
 
 export default UserRepository;

@@ -10,13 +10,5 @@ export const userSchema = new mongoose.Schema({
   type:{
     type: String,
     enum:['Customer', 'Seller']
-  },
-  orders: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Order'
-  }],
-  cartItems: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'CartItem'
-  }]
+  }
 });

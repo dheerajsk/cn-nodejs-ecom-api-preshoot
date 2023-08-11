@@ -12,6 +12,7 @@ import apiDocs from './swagger.json' assert { type: 'json' };
 import loggerMiddleware from './src/middlewares/logger.middleware.js';
 import { ApplicationError } from './src/error-handler/applicationError.js';
 import {connectDB} from './src/configs/db.js';
+import { connectUsingMongoose } from './src/configs/mongoosedb.js';
 
 // 2. Create Server
 const server = express();
@@ -92,4 +93,5 @@ server.use((req, res) => {
 server.listen(3200, () => {
   console.log(`Server is running on port 3200`);
   connectDB();
+  connectUsingMongoose();
 });

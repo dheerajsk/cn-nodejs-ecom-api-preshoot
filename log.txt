@@ -210,3 +210,19 @@
  Fri Aug 11 2023 17:36:09 GMT+0530 (India Standard Time) - /api/orders - {}
  Fri Aug 11 2023 18:55:06 GMT+0530 (India Standard Time) - /api/users/signup - {"type":"Seller7","email":"seller7@ecom.com","password":"Password"}
  Fri Aug 11 2023 18:55:20 GMT+0530 (India Standard Time) - /api/users/signup - {"type":"Seller","email":"seller7@ecom.com","password":"Password"}
+ Fri Aug 11 2023 19:28:41 GMT+0530 (India Standard Time) - /api/users/signup - {"type":"Customer","email":"dheeraj.s.roy@gmail.com","password":"Password"}
+ Fri Aug 11 2023 19:28:56 GMT+0530 (India Standard Time) - /api/users/getOTP?email=dheeraj.s.roy@gmail.com - {}
+ Fri Aug 11 2023 19:29:20 GMT+0530 (India Standard Time) - /api/users/getOTP?email=dheeraj.s.roy@gmail.com - {}
+ Fri Aug 11 2023 19:29:30 GMT+0530 (India Standard Time) - /api/users/getOTP?email=dheeraj.s.roy@gmail.com - {}
+ Fri Aug 11 2023 19:29:48 GMT+0530 (India Standard Time) - /api/users/getOTP?email=dheeraj.s.roy@gmail.com - {}
+ Fri Aug 11 2023 19:29:54 GMT+0530 (India Standard Time) - /api/users/signup?email=dheeraj.s.roy@gmail.com - {}
+ Fri Aug 11 2023 19:30:04 GMT+0530 (India Standard Time) - /api/users/signup - {}
+ Fri Aug 11 2023 19:30:27 GMT+0530 (India Standard Time) - /api/users/signup?email=dheeraj.s.roy@gmail.com - {}
+ Fri Aug 11 2023 19:30:37 GMT+0530 (India Standard Time) - /api/users/signup - {"type":"Customer","email":"dheeraj.s.roys@gmail.com","password":"Password"}
+ Fri Aug 11 2023 19:31:00 GMT+0530 (India Standard Time) - /api/users/signup - {}
+ Fri Aug 11 2023 19:31:06 GMT+0530 (India Standard Time) - /api/users/signup - {}
+ Fri Aug 11 2023 19:31:16 GMT+0530 (India Standard Time) - /api/users/getOTP - {}
+ Fri Aug 11 2023 19:31:35 GMT+0530 (India Standard Time) - /api/users/getOTP?email=dheeraj.s.roy@gmail.com - {}
+ Fri Aug 11 2023 19:31:56 GMT+0530 (India Standard Time) - /api/users/getOTP?email=dheeraj.s.roy@gmail.com - {}
+ Fri Aug 11 2023 19:32:18 GMT+0530 (India Standard Time) - /api/users/getOTP?email=dheeraj.s.roy@gmail.com - {}
+ Fri Aug 11 2023 19:32:41 GMT+0530 (India Standard Time) - /api/users/getOTP?email=dheeraj.s.roy@gmail.com - {}

@@ -16,6 +16,26 @@ export default class UserController {
     }  
   }
 
+  getOTP = async (req, res, next) => {
+    try{
+      const email=req.query.email
+      await this.userRepository.sendOTP(email);
+      res.status(200).send("OTP sent");
+    }catch(err){
+      next(err);
+    }  
+  }
+
+  resetPassword = async (req, res, next) => {
+    try{
+      const {otp, password, email}=req.body
+      await this.userRepository.resetPassword(email, otp, password);
+      res.status(200).send("Password is updated");
+    }catch(err){
+      next(err);
+    }  
+  }
+
   signIn = async (req, res) => {
     const result = await this.userRepository.signin(
       req.body.email,

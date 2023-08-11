@@ -13,5 +13,6 @@ const userController = new UserController();
 
 userRouter.post('/signup', userController.signUp);
 userRouter.post('/signin', userController.signIn);
+userRouter.get('/getOTP', userController.getOTP);
 
 export default userRouter;

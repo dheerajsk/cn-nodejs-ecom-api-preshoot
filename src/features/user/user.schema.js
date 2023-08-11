@@ -12,3 +12,9 @@ export const userSchema = new mongoose.Schema({
     enum:['Customer', 'Seller']
   }
 });
+
+export const userOTP = new mongoose.Schema({
+  email: String,
+  otp: Number,
+  expiresOn: Date
+})

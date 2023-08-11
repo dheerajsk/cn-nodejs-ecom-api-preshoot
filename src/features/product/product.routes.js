@@ -18,6 +18,12 @@ productRouter.post(
   '/rate',
   productController.rateProduct
 );
+
+productRouter.get(
+  '/averagePrice',
+  productController.averagePrice
+);
+
 productRouter.get(
   '/filter',
   productController.filterProducts

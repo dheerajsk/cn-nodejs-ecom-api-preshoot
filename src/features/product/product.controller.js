@@ -43,4 +43,13 @@ export default class ProductController {
     const result = await this.productRepository.filter(minPrice, maxPrice, category);
     res.status(200).send(result);
   }
+
+  averagePrice = async(req, res, next)=>{
+    try{
+      const result = await this.productRepository.averagePricePerCategory();
+      res.json(result);
+    }catch(err){
+      next(err);
+    }
+  }
 }

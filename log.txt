@@ -226,3 +226,25 @@
  Fri Aug 11 2023 19:31:56 GMT+0530 (India Standard Time) - /api/users/getOTP?email=dheeraj.s.roy@gmail.com - {}
  Fri Aug 11 2023 19:32:18 GMT+0530 (India Standard Time) - /api/users/getOTP?email=dheeraj.s.roy@gmail.com - {}
  Fri Aug 11 2023 19:32:41 GMT+0530 (India Standard Time) - /api/users/getOTP?email=dheeraj.s.roy@gmail.com - {}
+ Fri Aug 11 2023 23:30:16 GMT+0530 (India Standard Time) - /api/product - {}
+ Fri Aug 11 2023 23:30:20 GMT+0530 (India Standard Time) - /api/products - {}
+ Fri Aug 11 2023 23:30:53 GMT+0530 (India Standard Time) - /api/products/rate - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:31:16 GMT+0530 (India Standard Time) - /api/products/rate - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:32:18 GMT+0530 (India Standard Time) - /api/products/rate - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:32:43 GMT+0530 (India Standard Time) - /api/products/rate - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:33:39 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=4.5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:33:46 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=4.5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:36:51 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=4.5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:37:12 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:37:45 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:38:12 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:39:05 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:39:22 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:39:50 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:40:12 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:40:39 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:41:12 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:41:34 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:42:26 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:43:22 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}
+ Fri Aug 11 2023 23:43:53 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be376aea1291b9988dc4f2&rating=5 - {"productID":"64be376aea1291b9988dc4f2","rating":4.5}

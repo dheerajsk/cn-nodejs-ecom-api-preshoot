@@ -1,96 +1,77 @@
-import { getDB } from '../../configs/db.js';
-import { ObjectId } from 'mongodb';
+import mongoose from "mongoose";
+import { productSchema } from "./product.schema.js";
+import { ObjectId } from "mongodb";
 
-export default class ProductRepository {
-  constructor() {
-    this.collectionName = 'products'; // name of the collection in mongodb
-  }
+
+const ProductModel = mongoose.model("Product", productSchema);
+
+class ProductRepository {
 
   async getAll() {
-    const db = getDB();
-    const products = await db
-      .collection(this.collectionName)
-      .find({})
-      .toArray();
-    return products;
+    return await ProductModel.find();
   }
 
   async add(product) {
-    const db = getDB();
-    await db
-      .collection(this.collectionName)
-      .insertOne(product);
-    return product;
+    const newProduct = new ProductModel(product);
+    await newProduct.save();
+    return newProduct;
   }
 
-  async averagePricePerCategory(){
-    const db = getDB();
-    return await db.collection(this.collectionName).aggregate([
+  async averagePricePerCategory() {
+    return await ProductModel.aggregate([
       {
-        $group:{
-          _id:"$category",
-          averagePrice:{$avg: "$price"}
+        $group: {
+          _id: "$category",
+          averagePrice: { $avg: "$price" }
         }
       }
-    ]).toArray();
-
+    ]);
   }
 
   async rateProduct(userID, productID, rating) {
-    const db = getDB();
-    const productToUpdate = await db.collection(this.collectionName).findOne({ _id: new ObjectId(productID) });
-    const userRating = productToUpdate.ratings.find(rating => rating.userID === userID);
+    console.log(productID);
+    console.log(userID);
+    const productToUpdate = await ProductModel.findById(new ObjectId(productID));
+    console.log(productToUpdate.ratings);
+    const userRating = productToUpdate?.ratings?.find(rating => rating.userID === new ObjectId(userID));
     if (userRating) {
-        // User has already rated, update the rating.
-        await db.collection(this.collectionName).updateOne(
-            { _id: new ObjectId(productID), "ratings.userID": userID },
-            { $set: { "ratings.$.rating": rating } }
-        );
+        userRating.rating = rating;
     } else {
-        // New rating.
-        await db.collection(this.collectionName).updateOne(
-            { _id: new ObjectId(productID) },
-            { $push: { ratings: { userID, rating } } }
-        );
+      console.log("sd");
+      console.log(productToUpdate.ratings);
+      if(!productToUpdate.ratings){
+        console.log("sda");
+        productToUpdate.ratings=[];
+      }
+        productToUpdate.ratings.push({ userID, rating });
+        console.log(productToUpdate);
     }
-}
-
-
+    console.log(productToUpdate);
+    await productToUpdate.save();
+  }
 
   async getOne(id) {
-    const db = getDB();
-    const product = await db
-      .collection(this.collectionName)
-      .findOne({ _id: new ObjectId(id) });
-    return product;
+    return await ProductModel.findById(id);
   }
 
+  async filter(minPrice, maxPrice, categories) {
+    let filter = {};
 
-async filter(minPrice, maxPrice, categories) {
-  const db = getDB();
-  let filter = {};
+    if (minPrice && maxPrice) {
+      filter.price = { $gte: minPrice, $lte: maxPrice };
+    } else if (minPrice) {
+      filter.price = { $gte: minPrice };
+    } else if (maxPrice) {
+      filter.price = { $lte: maxPrice };
+    }
 
-  if (minPrice && maxPrice) {
-    filter = { $and: [{ price: { $gte: parseFloat(minPrice) } }, { price: { $lte: parseFloat(maxPrice) } }] };
-  } else if (minPrice) {
-    filter.price = { $gte: parseFloat(minPrice) };
-  } else if (maxPrice) {
-    filter.price = { $lte: parseFloat(maxPrice) };
+    if (categories) {
+      filter.category = { $in: categories };
+    }
+
+    return await ProductModel.find(filter).select('-_id');  // exclude _id
   }
 
-  if (categories) {
-    filter = { $and: [{ category: { $in: categories } }, filter] };
-  }
-
-  const result = await db
-    .collection(this.collectionName)
-    .find(filter)
-    .project({ _id: 0}) // exclude _id
-    .toArray();
-
-  return result;
 }
 
-
-  
-}
+export default ProductRepository;

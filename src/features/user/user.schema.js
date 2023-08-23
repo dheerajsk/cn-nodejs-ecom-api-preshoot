@@ -4,12 +4,22 @@ export const userSchema = new mongoose.Schema({
   name: String,
   email: {
     type: String,
-    unique: true
+    required: true,
+    unique: true,
+    lowercase: true,
+    match: [/.+\@.+\..+/, "Please enter a valid email"]
   },
-  password: String,
-  type:{
+  password: {
     type: String,
-    enum:['Customer', 'Seller']
+    required: true,
+    minlength: [8, "Password must be at least 8 characters long."],
+    validate: {
+      validator: function(value) {
+        // Check for 1 special character
+        return /^(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/.test(value);
+      },
+      message: "Password must have at least 1 special character."
+    }
   }
 });
 

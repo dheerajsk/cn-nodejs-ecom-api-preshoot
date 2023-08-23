@@ -13,6 +13,7 @@ import loggerMiddleware from './src/middlewares/logger.middleware.js';
 import { ApplicationError } from './src/error-handler/applicationError.js';
 import {connectDB} from './src/configs/db.js';
 import { connectUsingMongoose } from './src/configs/mongoosedb.js';
+import mongoose from 'mongoose';
 
 // 2. Create Server
 const server = express();
@@ -69,9 +70,13 @@ server.get('/', (req, res) => {
 server.use((err, req, res, next) => {
   console.log("ERRRRR")
   console.log(err);
-  if (err instanceof ApplicationError) {
+  if (err instanceof mongoose.Error.ValidationError) {
+    res.status(400).send(err.message);
+  }
+  else if (err instanceof ApplicationError) {
     res.status(err.code).send(err.message);
   }
+  
   // server errors.
   res
     .status(500)

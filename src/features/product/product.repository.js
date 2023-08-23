@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
 import { productSchema } from "./product.schema.js";
 import { ObjectId } from "mongodb";
+import { reviewSchema } from "./review.schema.js";
 
 
 const ProductModel = mongoose.model("Product", productSchema);
+const ReviewModel = mongoose.model("Review", reviewSchema);
 
 class ProductRepository {
 
@@ -29,30 +31,38 @@ class ProductRepository {
   }
 
   async rateProduct(userID, productID, rating) {
-    console.log(productID);
-    console.log(userID);
+    // First, check if the product exists
     const productToUpdate = await ProductModel.findById(new ObjectId(productID));
-    console.log(productToUpdate.ratings);
-    const userRating = productToUpdate?.ratings?.find(rating => rating.userID === new ObjectId(userID));
-    if (userRating) {
-        userRating.rating = rating;
-    } else {
-      console.log("sd");
-      console.log(productToUpdate.ratings);
-      if(!productToUpdate.ratings){
-        console.log("sda");
-        productToUpdate.ratings=[];
-      }
-        productToUpdate.ratings.push({ userID, rating });
-        console.log(productToUpdate);
+    if (!productToUpdate) {
+        throw new Error("Product not found!");
     }
-    console.log(productToUpdate);
-    await productToUpdate.save();
+    
+    // Try to find a review by this user for this product
+    const userReview = await ReviewModel.findOne({ product: new ObjectId(productID), userID: new ObjectId(userID) });
+
+    if (userReview) {
+        // If the review exists, just update the rating
+        userReview.rating = rating;
+        await userReview.save();
+    } else {
+        // Otherwise, create a new review
+        const newReview = new ReviewModel({
+            product: new ObjectId(productID),
+            userID: new ObjectId(userID),
+            rating: rating
+        });
+        await newReview.save();
+    }
   }
 
   async getOne(id) {
-    return await ProductModel.findById(id);
-  }
+    return await ProductModel.findById(id)
+                             .populate({
+                                 path: 'reviews', 
+                                 model: 'Review'
+                             });
+}
+
 
   async filter(minPrice, maxPrice, categories) {
     let filter = {};

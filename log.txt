@@ -261,3 +261,11 @@
  Wed Aug 23 2023 10:06:30 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"dheeraj.sk@gmail.com","password":"Password"}
  Wed Aug 23 2023 10:06:56 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"dheeraj.sk@gmail.com","password":"Password"}
  Wed Aug 23 2023 10:07:08 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"dheeraj.sk@gmail.com","password":"Passr!d"}
+ Wed Aug 23 2023 10:57:06 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"dheeraj.sk@gmail.com","password":"Password"}
+ Wed Aug 23 2023 10:57:13 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"dheeraj.sk@gmail.com","password":"Password1@"}
+ Wed Aug 23 2023 10:57:59 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be3f93f0cec6316e36b13e&rating=4 - {}
+ Wed Aug 23 2023 10:59:01 GMT+0530 (India Standard Time) - /api/products/rate?productID=64be3f93f0cec6316e36b13e&rating=4 - {}
+ Wed Aug 23 2023 11:03:41 GMT+0530 (India Standard Time) - /api/products/64be376aea1291b9988dc4f2 - {}
+ Wed Aug 23 2023 11:03:50 GMT+0530 (India Standard Time) - /api/products/64be376aea1291b9988dc4f2 - {}
+ Wed Aug 23 2023 11:03:59 GMT+0530 (India Standard Time) - /api/products/64be376aea1291b9988dc4f2 - {}
+ Wed Aug 23 2023 11:04:55 GMT+0530 (India Standard Time) - /api/products/64be376aea1291b9988dc4f2 - {}

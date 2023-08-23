@@ -25,5 +25,9 @@ export const productSchema = new mongoose.Schema({
     type: String,
     minlength: [10, "Description must be at least 10 characters."],
     maxlength: [200, "Description can't exceed 200 characters."]
-  }
+  },
+  reviews: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Review'
+  }]
 });

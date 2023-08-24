@@ -14,6 +14,7 @@ import { ApplicationError } from './src/error-handler/applicationError.js';
 import {connectDB} from './src/configs/db.js';
 import { connectUsingMongoose } from './src/configs/mongoosedb.js';
 import mongoose from 'mongoose';
+import likeRouter from './src/features/like/like.routes.js';
 
 // 2. Create Server
 const server = express();
@@ -46,7 +47,11 @@ server.use(
 );
 
 server.use(loggerMiddleware);
-
+server.use(
+  '/api/likes',
+  jwtAuth,
+  likeRouter
+);
 server.use(
   '/api/products',
   jwtAuth,

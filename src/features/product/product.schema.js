@@ -6,11 +6,10 @@ export const productSchema = new mongoose.Schema({
     required: [true, "Product name is required."],
     unique: true
   },
-  category: {
-    type: String,
-    required: [true, "Category name is required."],
-    unique: true
-  },
+  categories: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category'
+  }],
   sku: {
     type: String,
     required: true,

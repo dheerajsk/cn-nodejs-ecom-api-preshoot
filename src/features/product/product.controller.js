@@ -11,11 +11,14 @@ export default class ProductController {
     res.status(200).send(products);
   }
 
-  addProduct = async (req, res) => {
-    const { name, price, sizes } = req.body;
-    const newProduct = new ProductModel(null, name, parseFloat(price), sizes.split(','),imageUrl)
-    const createdRecord = await this.productRepository.add(newProduct);
-    res.status(201).send(createdRecord);
+  addProduct = async (req, res, next) => {
+    try{
+      const createdRecord = await this.productRepository.add(req.body);
+      res.status(201).send(createdRecord);
+    }
+    catch(err){
+      next(err);
+    }
   }
 
   rateProduct = async (req, res) => {

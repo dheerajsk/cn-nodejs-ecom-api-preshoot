@@ -31,9 +31,7 @@ export const productSchema = new mongoose.Schema({
   }]
 }).pre("save", (next)=>{
   console.log("Creating a new Product");
-  // You can log this to database or update warehouse.
   next();
 }).post("save", ()=>{
   console.log("Product saved");
-  // You can log this to database. to confirm warehouse.
 });

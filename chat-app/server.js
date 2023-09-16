@@ -2,6 +2,8 @@ import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
+import { Chat } from './chat.scehma.js';
+import { connect } from './mongodb.js';
 
 const app = express();
 
@@ -30,12 +32,15 @@ io.on('connection', (socket) => {
             userName: socket.userName, // Attach the stored username to the message
             message: message
         };
-        console.log(userMessage)
+        const chatMessage = new Chat({
+            username: socket.userName,
+            message: message,
+            timestamp: new Date()
+        });
+        chatMessage.save();
         // Broadcast the message to all connected clients, excluding the sender
         socket.broadcast.emit('broadcast_message', userMessage);
 
-        // If you also want to broadcast back to the sender, use the line below
-        // io.emit('broadcast_message', message);
     });
     socket.on('disconnect', () => {
         console.log('Client disconnected');
@@ -44,4 +49,5 @@ io.on('connection', (socket) => {
 
 server.listen(3000, () => {
     console.log('Server listening on port 3000');
+    connect();
 });

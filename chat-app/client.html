@@ -4,6 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Socket.io Chat</title>
+
+    <style>
+        /* Style for the text box */
+        input[type="text"] {
+            width: 70%;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* Style for the button */
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .message:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
 
 
@@ -48,6 +85,13 @@
             }
         });
 
+        socket.on('load_previous_messages', (messages) => {
+            console.log(messages)
+            messages.forEach(message => {
+                displayMessage(message);
+            });
+        });
+
         // Listen for new messages from the server
         socket.on('broadcast_message', function (data) {
             console.log(data)
@@ -56,6 +100,33 @@
             msgElement.innerHTML = `<strong>${data.userName}</strong>: ${data.message}`;
             messageList.appendChild(msgElement);
         });
+
+        function displayMessage(message) {
+            let time = new Date(message.timestamp);
+            let formattedTime = formatDate(time);
+            const msgElement = document.createElement('div');
+            msgElement.className = 'message';
+            msgElement.innerHTML += `<div><strong>${message.username} ${formattedTime}:</strong> ${message.message}</div>`;
+            messageList.appendChild(msgElement);
+        }
+
+        function formatDate(date) {
+            const day = date.getDate();
+            const month = date.getMonth() + 1; // JavaScript month starts from 0
+            const year = date.getFullYear();
+
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            const meridiem = hours >= 12 ? 'PM' : 'AM';
+
+            // Convert to 12-hour format
+            hours = hours % 12;
+            hours = hours ? hours : 12; // if 0, then it's 12
+
+            minutes = minutes < 10 ? '0' + minutes : minutes; // Add leading 0 to minutes if less than 10
+
+            return `${day}/${month}/${year} ${hours}:${minutes} ${meridiem}`;
+        }
 
     </script>
 </body>

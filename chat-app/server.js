@@ -20,9 +20,19 @@ const io = new Server(server, {
 
 io.on('connection', (socket) => {
     console.log('New client connected');
+
+    socket.on('join', (userName) => {
+        socket.userName = userName;
+    });
+
     socket.on('new_message', (message) => {
+        let userMessage = {
+            userName: socket.userName, // Attach the stored username to the message
+            message: message
+        };
+        console.log(userMessage)
         // Broadcast the message to all connected clients, excluding the sender
-        socket.broadcast.emit('broadcast_message', message);
+        socket.broadcast.emit('broadcast_message', userMessage);
 
         // If you also want to broadcast back to the sender, use the line below
         // io.emit('broadcast_message', message);

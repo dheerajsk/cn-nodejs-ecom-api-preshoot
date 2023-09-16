@@ -19,7 +19,12 @@
     <!-- The existing Socket.io connection code -->
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script>
+        const userName = prompt("Please enter your name:");
         const socket = io.connect('http://localhost:3000');
+
+        socket.on('connect', () => {
+            socket.emit('join', userName);
+        });
 
         // Here we’ll add the event listeners for our chat interface
 
@@ -34,7 +39,8 @@
 
                 // Append the message to our chat
                 const messageElem = document.createElement("div");
-                messageElem.innerText = message;
+                messageElem.className = 'message';
+                messageElem.innerHTML = `<strong>${userName}</strong>: ${message}`;
                 messageList.appendChild(messageElem);
 
                 // Clear the input
@@ -44,9 +50,11 @@
 
         // Listen for new messages from the server
         socket.on('broadcast_message', function (data) {
-            const messageElem = document.createElement("div");
-            messageElem.innerText = data;
-            messageList.appendChild(messageElem);
+            console.log(data)
+            const msgElement = document.createElement('div');
+            msgElement.className = 'message';
+            msgElement.innerHTML = `<strong>${data.userName}</strong>: ${data.message}`;
+            messageList.appendChild(msgElement);
         });
 
     </script>

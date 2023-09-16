@@ -1,0 +1,7 @@
+{
+    "name": "my-tasks",
+    "version": "0.1.0",
+    "devDependencies": {
+        "grunt": "^1.6.1"
+    }
+}
